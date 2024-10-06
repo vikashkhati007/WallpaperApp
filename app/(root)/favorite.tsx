@@ -1,16 +1,13 @@
 import { ImageCard } from "@/components/ImageCard";
 import ParallaxScrollView from "@/components/ParallaxScrollView";
 import { useState } from "react";
-import { FlatList, Image, SafeAreaView, StyleSheet, View } from "react-native";
+import { FlatList, Image, SafeAreaView, StyleSheet, Text, View } from "react-native";
 import { useWallpaper } from "@/hooks/UseImageCard";
-import { withExpoSnack } from 'nativewind';
-import { styled } from 'nativewind';
-
-
-
 export default function favorite() {
   const [bottomSlide, setBottomSlide] = useState(false);
   const wallpaper = useWallpaper();
+ 
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View style={{ flex: 1 }}>
@@ -25,9 +22,8 @@ export default function favorite() {
           }
           headerBackgroundColor={{ dark: "white", light: "black" }}
         >
-          <View
-          
-          >
+          <Text className="bg-red-800" >Hello</Text>
+          <View>
             <FlatList
             style={style.CardStyle}
               data={wallpaper}
