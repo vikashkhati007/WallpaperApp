@@ -1,10 +1,19 @@
-import { Slot } from 'expo-router';
-import {GestureHandlerRootView} from 'react-native-gesture-handler';
+import { Stack } from "expo-router";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
-export default function Layout(){
-    return(
-        <GestureHandlerRootView>
-            <Slot />
-        </GestureHandlerRootView>
-    )
+export default function Layout() {
+  return (
+    <GestureHandlerRootView>
+      <Stack screenOptions={{ headerShown: false }}>
+        <Stack.Screen
+          name="(stacktabs)/accountinfo"
+          options={{
+            headerShown: true,
+            headerTitle: "Account Info",
+            headerBackTitle: "Go Back",
+          }}
+        />
+      </Stack>
+    </GestureHandlerRootView>
+  );
 }
