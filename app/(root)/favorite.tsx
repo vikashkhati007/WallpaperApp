@@ -29,14 +29,13 @@ export default function favorite() {
           }
           headerBackgroundColor={{ dark: "white", light: "black" }}
         >
-          <View style={{ flex: 1 }}>
+         <View style={{ flex: 1 }}>
             <FlatList
               data={wallpaper}
-              renderItem={({ item }) => (
-               <ImageCard item={item}/>
-              )}
+              renderItem={({ item }) => <ImageCard item={item} />}
               keyExtractor={(item) => item.title}
-              numColumns={2} // This is important to define number of columns
+              numColumns={2} // Defines number of columns
+              columnWrapperStyle={{ justifyContent: 'space-between', paddingHorizontal: 10 }} // Adds gap between columns
             />
           </View>
         </ParallaxScrollView>
