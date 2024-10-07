@@ -1,12 +1,19 @@
-import { ImageCard } from "@/components/ImageCard";
 import ParallaxScrollView from "@/components/ParallaxScrollView";
 import { useState } from "react";
-import { FlatList, Image, SafeAreaView, StyleSheet, Text, View } from "react-native";
+import {
+  FlatList,
+  Image,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import { useWallpaper } from "@/hooks/UseImageCard";
+import { ThemedText } from "@/components/ThemedText";
+import { ImageCard } from "@/components/ImageCard";
 export default function favorite() {
   const [bottomSlide, setBottomSlide] = useState(false);
   const wallpaper = useWallpaper();
- 
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
@@ -16,26 +23,20 @@ export default function favorite() {
             <Image
               style={{ flex: 1 }}
               source={{
-                uri: "https://ideogram.ai/assets/progressive-image/balanced/response/EFka7R2vQcmdAbEeHsmO_w",
+                uri: wallpaper[wallpaper.length - 1].url,
               }}
             />
           }
           headerBackgroundColor={{ dark: "white", light: "black" }}
         >
-          <Text className="bg-red-800" >Hello</Text>
-          <View>
+          <View style={{ flex: 1 }}>
             <FlatList
-            style={style.CardStyle}
               data={wallpaper}
-              renderItem={({item}) => 
-                <Image
-                style={{ width: 200, height: 200 }}
-                source={{
-                  uri: item.url,
-                }}
-              />
-              }
-              keyExtractor={item => item.title}
+              renderItem={({ item }) => (
+               <ImageCard item={item}/>
+              )}
+              keyExtractor={(item) => item.title}
+              numColumns={2} // This is important to define number of columns
             />
           </View>
         </ParallaxScrollView>
@@ -43,16 +44,6 @@ export default function favorite() {
     </SafeAreaView>
   );
 }
-
-const style = StyleSheet.create({
-  CardStyle: {
-    display: "flex",
-    flexDirection: "row",
-    flexWrap: "wrap",
-  },
-});
-
-
 
 {
   /* <Text>Favorite Page</Text>
