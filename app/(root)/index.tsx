@@ -2,7 +2,7 @@ import Library from "@/components/Home/library";
 import Liked from "@/components/Home/liked";
 import Suggested from "@/components/Home/suggested";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
-import { SafeAreaView, View } from "react-native";
+import { SafeAreaView, View} from "react-native";
 const Tab = createMaterialTopTabNavigator();
 
 export default function index() {

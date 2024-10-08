@@ -1,6 +1,7 @@
 import { Image, Pressable, View } from "react-native";
 import { ThemedText } from "./ThemedText";
 import { WallpaerProps } from "@/hooks/UseImageCard";
+import { Ionicons } from "@expo/vector-icons";
 
 export const ImageCard = ({ item, onClick }: { item: WallpaerProps, onClick: any }) => {
   return (
@@ -8,7 +9,7 @@ export const ImageCard = ({ item, onClick }: { item: WallpaerProps, onClick: any
     onPress={onClick}
       style={{
         flex: 1, // This will ensure it takes up space equally in each row
-        margin: 10, // Added margin for gap between items
+        margin: 8, // Added margin for gap between items
         position: "relative", // Important for absolute positioning inside
       }}
     >
@@ -34,9 +35,9 @@ export const ImageCard = ({ item, onClick }: { item: WallpaerProps, onClick: any
         }}
       >
         <ThemedText style={{ color: "white" }}>
-          {item.title.slice(0, 10)}
+          {item.title.split(" ").slice(0, 2).join(" ")}...
         </ThemedText>
-        <ThemedText style={{ color: "white" }}>❤️</ThemedText>
+        <Ionicons  name="heart-outline" size={20} color={"white"}/>
       </View>
     </Pressable>
   );

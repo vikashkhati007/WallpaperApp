@@ -13,7 +13,7 @@ export default function Layout(){
         <Tabs.Screen
           name="favorite"
           options={{
-            tabBarIcon: ({ color }) => <FontAwesome size={28}  name="cog" color={color} />,
+            tabBarIcon: ({ color }) => <FontAwesome size={28}  name="heart" color={color} />,
           }}
         />
          <Tabs.Screen
@@ -23,5 +23,6 @@ export default function Layout(){
           }}
         />
       </Tabs>
+      
     )
 }

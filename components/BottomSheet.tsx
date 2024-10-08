@@ -69,7 +69,7 @@ export const DownloadImage = ({ onClose, item }: any) => {
       handleStyle={{ display: "none" }}
       enablePanDownToClose={true}
       onClose={onClose}
-      handleIndicatorStyle={{ height: 0 }}
+      handleIndicatorStyle={{ height: 0}}
       snapPoints={["95%"]}
       ref={bottomSheetRef}
       onChange={handleSheetChanges}
