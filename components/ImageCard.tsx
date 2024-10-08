@@ -1,10 +1,11 @@
-import { Image, View } from "react-native";
+import { Image, Pressable, View } from "react-native";
 import { ThemedText } from "./ThemedText";
 import { WallpaerProps } from "@/hooks/UseImageCard";
 
-export const ImageCard = ({ item }: { item: WallpaerProps }) => {
+export const ImageCard = ({ item, onClick }: { item: WallpaerProps, onClick: any }) => {
   return (
-    <View
+    <Pressable
+    onPress={onClick}
       style={{
         flex: 1, // This will ensure it takes up space equally in each row
         margin: 10, // Added margin for gap between items
@@ -12,8 +13,7 @@ export const ImageCard = ({ item }: { item: WallpaerProps }) => {
       }}
     >
       <Image
-        className="rounded-md"
-        style={{ width: "100%", height: 300, borderRadius: 20 }} // Image takes full width of the container
+        style={{ width: "100%", height: 250, borderRadius: 20 }} // Image takes full width of the container
         source={{
           uri: item.url,
         }}
@@ -38,6 +38,6 @@ export const ImageCard = ({ item }: { item: WallpaerProps }) => {
         </ThemedText>
         <ThemedText style={{ color: "white" }}>❤️</ThemedText>
       </View>
-    </View>
+    </Pressable>
   );
 };
