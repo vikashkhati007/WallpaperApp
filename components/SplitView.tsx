@@ -1,19 +1,25 @@
-import { FlatList, Image, SafeAreaView, View } from "react-native";
+import { FlatList, Image, Pressable, SafeAreaView, View } from "react-native";
 import ParallaxScrollView from "./ParallaxScrollView";
 import { ImageCard } from "./ImageCard";
 import { useWallpaper } from "@/hooks/UseImageCard";
 import { useState } from "react";
 import { DownloadImage } from "./BottomSheet";
+import { Ionicons } from "@expo/vector-icons";
 
-export const SplitView = ({wallpaper}: any) => {
+export const SplitView = ({name, wallpaper, setWallpaperData}: any) => {
   const [bottomSlide, setBottomSlide] = useState<any>(null);
+
   return (
     <>
       <View style={{ flex: 1 }}>
-        <FlatList
+        {wallpaper.length > 1 ? 
+          <FlatList
           data={wallpaper}
           renderItem={({ item }) => (
             <ImageCard
+            pagename={name}
+            wallpaper={wallpaper}
+            setWallpaperData={setWallpaperData}
               onClick={() => {
                 setBottomSlide(item);
               }}
@@ -25,10 +31,13 @@ export const SplitView = ({wallpaper}: any) => {
           columnWrapperStyle={{
             justifyContent: "space-between",
           }} // Adds gap between columns
-        />
+        />: null
+      }
+      
       </View>
       {bottomSlide && (
         <DownloadImage
+        pagename={name}
           item={bottomSlide}
           onClose={() => setBottomSlide(null)}
         />

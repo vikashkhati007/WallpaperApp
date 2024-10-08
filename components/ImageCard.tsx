@@ -2,8 +2,22 @@ import { Image, Pressable, View } from "react-native";
 import { ThemedText } from "./ThemedText";
 import { WallpaerProps } from "@/hooks/UseImageCard";
 import { Ionicons } from "@expo/vector-icons";
+import { useState } from "react";
 
-export const ImageCard = ({ item, onClick }: { item: WallpaerProps, onClick: any }) => {
+export const ImageCard = ({ pagename,  item, onClick, wallpaper, setWallpaperData}: {pagename: string,  item: WallpaerProps, onClick: any, wallpaper: any, setWallpaperData:any}) => {
+  const [heart , setHeart] = useState(false);
+  const handleLiked = ({index}:any) =>{
+    setHeart(!heart);
+    // Update the global wallpaper data
+    const updatedData = wallpaper.map((wallpaperItem: any) =>
+      wallpaperItem.url === item.url // Match wallpaper item by URL or any unique identifier
+        ? { ...wallpaperItem, liked: heart ? false : true } // Toggle the liked state
+        : wallpaperItem
+    );
+
+    // Update wallpaper data using setWallpaperData
+    setWallpaperData(updatedData);
+ }
   return (
     <Pressable
     onPress={onClick}
@@ -37,7 +51,11 @@ export const ImageCard = ({ item, onClick }: { item: WallpaerProps, onClick: any
         <ThemedText style={{ color: "white" }}>
           {item.title.split(" ").slice(0, 2).join(" ")}...
         </ThemedText>
-        <Ionicons  name="heart-outline" size={20} color={"white"}/>
+        {pagename === "likedpage" ? null :
+         <Pressable onPress={()=>handleLiked(item.id)}>
+         {heart ? <Ionicons name="heart" size={20} color={"red"}/> : <Ionicons  name="heart-outline" size={20} color={"white"}/> }
+       </Pressable>
+        }
       </View>
     </Pressable>
   );

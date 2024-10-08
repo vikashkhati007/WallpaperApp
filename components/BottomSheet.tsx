@@ -5,7 +5,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { ThemedText } from "./ThemedText";
 import * as FileSystem from 'expo-file-system';
 
-export const DownloadImage = ({ onClose, item }: any) => {
+export const DownloadImage = ({pagename, onClose, item }: any) => {
   // ref
   const bottomSheetRef = useRef<BottomSheet>(null);
 
@@ -88,12 +88,14 @@ export const DownloadImage = ({ onClose, item }: any) => {
           <View
             style={{ flexDirection: "row", position: "absolute", top: 10, right: 10, gap: 2 }}
           >
-          <Ionicons
-          style={{backgroundColor: "black", padding: 5, borderRadius: 50 }}
-            name="heart-outline"
-            size={30}
-            color="white"
-          />
+            {pagename === "likedpage"? null :
+             <Ionicons
+             style={{backgroundColor: "black", padding: 5, borderRadius: 50 }}
+               name="heart-outline"
+               size={30}
+               color="white"
+             />
+            }
            <Ionicons
           style={{backgroundColor: "black", padding: 5, borderRadius: 50 }}
             name="share-social-outline"
