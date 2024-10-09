@@ -70,7 +70,7 @@ export const DownloadImage = ({pagename, onClose, item }: any) => {
       enablePanDownToClose={true}
       onClose={onClose}
       handleIndicatorStyle={{ height: 0}}
-      snapPoints={["95%"]}
+      snapPoints={["95%"]} // Bottom sheet ki height
       ref={bottomSheetRef}
       onChange={handleSheetChanges}
     >

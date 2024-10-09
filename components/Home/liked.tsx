@@ -13,8 +13,17 @@ export default function Liked({ data }: any) {
         </View>
       ) : (
         // If no wallpapers are liked, show this message
-        <Text>No liked wallpapers</Text>
-      )}
+        <View style={{flex: 1, display: "flex", justifyContent: "center", alignItems: "center"}}>
+        <Text
+          style={{
+            fontWeight: 500,
+            fontSize: 20,
+            color: "grey",
+          }}
+        >
+          You have not liked any Wallpapers
+        </Text>
+      </View>)}
     </View>
   );
 }
